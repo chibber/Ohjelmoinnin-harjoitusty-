@@ -3,7 +3,10 @@ package my.miinaharava;
 import java.util.*;
 
 /**
- * Ruudukko-luokka toimii kehikkona Ruutu-luokalle.
+ * Ruudukko-luokka toimii kehikkona Ruutu-luokalle. Se luo konstrukstorissaan Ruutu[][]
+ *  -tyyppisen taulukon, johon ruutujen numeroarvoja tallennetaan. Ruudukko -luokka
+ * ei sisällä pelin toimivuuden osalta oleellista koodia, joka taasen löytyy Pelilogiikka
+ * -luokasta.
  * 
  */
 public class Ruudukko {
@@ -14,9 +17,13 @@ public class Ruudukko {
 //    private int sarakkeet;
     
     /**
+     * Konstrukstori luo Ruutu[][] -tyyppisen taulukon ja kutsuu taulukon alustusmetodia.
+     * Lisäksi luodaan pelilogiikkaolio, jolla kutsutaan miinojen ja numeroiden taulukkoon
+     * asettamismetodeita.
      * 
-     * @param riv
-     * @param sar 
+     * @param rivit Ruudukon rivien määrä
+     * @param sarakkeet Ruudukon sarakkeiden määrä
+     * @param miinat Haluttu miinojen määrä
      */
     public Ruudukko(int rivit, int sarakkeet, int miinat) {
         ruudukko = new Ruutu[rivit][sarakkeet];
@@ -27,6 +34,8 @@ public class Ruudukko {
     }
     
     /**
+     * Metodi alustaa ruudukon. Jokaisen ruudun arvo on alussa null, joten niihin
+     * pitää luoda Ruutu -luokan ilmentymät erikseen, aluksi arvolla 0.
      * 
      */
     public void alustaRuudukko() {

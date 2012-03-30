@@ -17,6 +17,9 @@ public class RuudukkoTest {
         ruudukko = new Ruudukko(10, 10, 10);
     }
     
+    /**
+     * 
+     */
     @Test
     public void toimiihanAlustus() {
         ruudukko.alustaRuudukko();
