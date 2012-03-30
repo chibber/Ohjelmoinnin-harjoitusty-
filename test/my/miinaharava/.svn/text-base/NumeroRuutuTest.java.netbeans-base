@@ -1,0 +1,28 @@
+package my.miinaharava;
+
+import org.junit.*;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * Testaa NumeroRuutu-luokkaa.
+ */
+public class NumeroRuutuTest {
+    
+    @Test
+    public void numeronAsettaminenToimii() {
+        assertEquals(new NumeroRuutu(1).getOminaisuus(), 1);
+        assertEquals(new NumeroRuutu(5).getOminaisuus(), 5);
+    }
+    
+    /**
+     * Ominaisuus on defaulttina 0, jolloin jos yrittää luoda jotain pienempää
+     * kuin 1 tai suurempaa kuin 8, ominaisuus pysyy nollana.
+     */
+    @Test
+    public void numeroValillaYksiJaKahdeksan() {
+        assertTrue(new NumeroRuutu(9).getOminaisuus() == 0);
+        assertTrue(new NumeroRuutu(0).getOminaisuus() == 0);
+    }
+    
+}

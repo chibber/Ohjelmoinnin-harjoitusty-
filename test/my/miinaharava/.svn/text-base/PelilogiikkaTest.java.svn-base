@@ -1,0 +1,50 @@
+package my.miinaharava;
+
+import org.junit.*;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author Vilma
+ */
+public class PelilogiikkaTest {
+    
+    Pelilogiikka logiikka;
+    Ruutu[][] ruudukko;
+    int rivit = 10;
+    int sarakkeet = 10;
+    int miinojenLkm = 10;
+    
+    
+    @Before
+    public void setUp() {
+        logiikka = new Pelilogiikka();
+    }
+    
+    @Test 
+    public void oikeaMaaraMiinoja() {
+        ruudukko = new Ruutu[rivit][sarakkeet];
+        for (int i = 0; i < ruudukko.length; i++) {     //alustus
+            for (int j = 0; j < ruudukko[i].length; j++) {
+                ruudukko[i][j] = new Ruutu(0);
+            }
+        }
+        
+        assertEquals(laskeMiinat(), 0);
+        logiikka.asetaMiinatRuudukkoon(ruudukko, miinojenLkm);
+        assertEquals(laskeMiinat(), miinojenLkm);
+    }
+    
+    
+    
+    private int laskeMiinat() {
+        int miinat = 0;
+        for (int i = 0; i < ruudukko.length; i++) {
+            for (int j = 0; j < ruudukko[i].length; j++) {
+                if (ruudukko[i][j].getOminaisuus() == -1)
+                    miinat++;
+            }
+        }
+        return miinat;
+    }
+}
