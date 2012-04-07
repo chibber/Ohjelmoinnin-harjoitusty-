@@ -11,9 +11,9 @@ public class PelilogiikkaTest {
     
     Pelilogiikka logiikka;
     Ruutu[][] ruudukko;
-    int rivit = 10;
-    int sarakkeet = 10;
-    int miinojenLkm = 10;
+    int rivit;
+    int sarakkeet;
+    int miinojenLkm;
     
     
     @Before
@@ -21,22 +21,27 @@ public class PelilogiikkaTest {
         logiikka = new Pelilogiikka();
     }
     
+    /**
+     * Testi varmistaa, että ruudukkoon menee yhtä paljon miinoja kuin parametreina
+     * annetaan.
+     */
     @Test 
     public void oikeaMaaraMiinoja() {
+        miinojenLkm = 13;
+        rivit = 10;
+        sarakkeet = 10;
         ruudukko = new Ruutu[rivit][sarakkeet];
-        for (int i = 0; i < ruudukko.length; i++) {     //alustus
-            for (int j = 0; j < ruudukko[i].length; j++) {
-                ruudukko[i][j] = new Ruutu(0);
-            }
-        }
+        alustaRuudukko(ruudukko);
         
         assertEquals(laskeMiinat(), 0);
         logiikka.asetaMiinatRuudukkoon(ruudukko, miinojenLkm);
         assertEquals(laskeMiinat(), miinojenLkm);
     }
     
-    
-    
+    /**
+     * Testin oiekaMaaraMiinoja käyttämä metodi miinojen laskemiseen.
+     * @return miinojen lukumäärä
+     */
     private int laskeMiinat() {
         int miinat = 0;
         for (int i = 0; i < ruudukko.length; i++) {
@@ -46,5 +51,16 @@ public class PelilogiikkaTest {
             }
         }
         return miinat;
+    }
+    
+    /**
+     * Testiluokan oma alustusmetodi ruudukolle. Asettaa jokaisen ruudukon ruudun arvoksi 0.
+     */
+    private void alustaRuudukko(Ruutu[][] ruudukko) {
+        for (int i = 0; i < ruudukko.length; i++) {
+            for (int j = 0; j < ruudukko[i].length; j++) {
+                ruudukko[i][j] = new Ruutu(0);
+            }
+        }
     }
 }

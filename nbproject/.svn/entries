@@ -11,8 +11,8 @@ file:///fs/home/vilmalin/svn/repository
 26
 vilmalin
 has-props
-
-
+has-prop-mods
+svn:special svn:externals svn:needs-lock
 
 
 
@@ -25,6 +25,74 @@ has-props
 
 
 5783fea4-4f2e-482b-961e-c7cdfaa1df49
+
+build-impl.xml
+file
+
+
+
+
+2012-03-15T12:12:54.000000Z
+ff50c7b8ba05e817dfdd610b2e479c9e
+2012-03-15T13:09:29.563940Z
+18
+vilmalin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+55906
+
+genfiles.properties
+file
+
+
+
+
+2012-03-15T12:12:54.000000Z
+ab204b713df7a2c9c0cdc511406d7482
+2012-03-15T13:09:29.563940Z
+18
+vilmalin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+467
 
 project.properties
 file
@@ -93,72 +161,4 @@ vilmalin
 
 
 504
-
-genfiles.properties
-file
-
-
-
-
-2012-03-15T12:12:54.000000Z
-ab204b713df7a2c9c0cdc511406d7482
-2012-03-15T13:09:29.563940Z
-18
-vilmalin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-467
-
-build-impl.xml
-file
-
-
-
-
-2012-03-15T12:12:54.000000Z
-ff50c7b8ba05e817dfdd610b2e479c9e
-2012-03-15T13:09:29.563940Z
-18
-vilmalin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-55906
 

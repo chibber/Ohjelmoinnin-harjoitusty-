@@ -11,8 +11,8 @@ file:///fs/home/vilmalin/svn/repository
 29
 vilmalin
 has-props
-
-
+has-prop-mods
+svn:special svn:externals svn:needs-lock
 
 
 
@@ -25,83 +25,6 @@ has-props
 
 
 5783fea4-4f2e-482b-961e-c7cdfaa1df49
-
-test
-dir
-
-dir_conflicts.prej
-file
-
-
-
-
-2012-03-30T11:10:42.000000Z
-36eca5284a273d0a40bdef564e8b628d
-2012-03-25T18:53:47.374726Z
-28
-vilmalin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-115
-
-nbproject
-dir
-
-src
-dir
-
-manifest.mf
-file
-
-
-
-
-2012-03-15T12:12:54.000000Z
-d6fe4af2f67849f1c01635b0ed4c443d
-2012-03-15T13:09:29.563940Z
-18
-vilmalin
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-82
 
 Tetris
 dir
@@ -139,4 +62,81 @@ vilmalin
 
 
 3654
+
+dir_conflicts.prej
+file
+
+
+
+
+2012-03-30T11:10:42.000000Z
+36eca5284a273d0a40bdef564e8b628d
+2012-03-25T18:53:47.374726Z
+28
+vilmalin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+115
+
+manifest.mf
+file
+
+
+
+
+2012-03-15T12:12:54.000000Z
+d6fe4af2f67849f1c01635b0ed4c443d
+2012-03-15T13:09:29.563940Z
+18
+vilmalin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+82
+
+nbproject
+dir
+
+src
+dir
+
+test
+dir
 

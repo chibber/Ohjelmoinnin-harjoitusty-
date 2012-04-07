@@ -13,8 +13,6 @@ public class Ruudukko {
 
     private Ruutu[][] ruudukko;
     private Pelilogiikka logiikka;
-//    private int rivit;
-//    private int sarakkeet;
     
     /**
      * Konstrukstori luo Ruutu[][] -tyyppisen taulukon ja kutsuu taulukon alustusmetodia.
@@ -26,11 +24,12 @@ public class Ruudukko {
      * @param miinat Haluttu miinojen määrä
      */
     public Ruudukko(int rivit, int sarakkeet, int miinat) {
+        // syötteiden suuruuden tarkistus muualla?
         ruudukko = new Ruutu[rivit][sarakkeet];
         alustaRuudukko();
         logiikka = new Pelilogiikka();
         ruudukko = logiikka.asetaMiinatRuudukkoon(ruudukko, miinat);
-        ruudukko = logiikka.asetaNumerotRuutuihin(ruudukko);
+        ruudukko = logiikka.asetaNumerotRuudukkoon(ruudukko);
     }
     
     /**
@@ -58,6 +57,8 @@ public class Ruudukko {
                 System.out.print("[");
                 if (ruudukko[i][j].getOminaisuus() == -1)
                     System.out.print("*");
+                else if (ruudukko[i][j].getOminaisuus() > 0)
+                    System.out.print(ruudukko[i][j].getOminaisuus());
                 else
                     System.out.print(" ");
                 System.out.print("] ");
@@ -67,9 +68,8 @@ public class Ruudukko {
     }
     
     public static void main (String[] args) {
-        Ruudukko ruudukko = new Ruudukko(10, 10, 30);
+        Ruudukko ruudukko = new Ruudukko(10, 10, 20);
         ruudukko.tulostaRuudukko();
         
     }
-    
 }

@@ -12,22 +12,27 @@ public class RuudukkoTest {
     Ruudukko ruudukko;
     Ruutu[][] ruutuRuudukko;
     
-    @Before
-    public void setUp() {
-        ruudukko = new Ruudukko(10, 10, 10);
+    /**
+     * 
+     */
+    @Test
+    public void alustusIsollaSyotteella() {
+       ruudukko = new Ruudukko(35, 50, 1670);
+       ruudukko.alustaRuudukko();
+       assertEquals(ruudukko.getRuudunOminaisuus(23, 49), 0);
+       assertEquals(ruudukko.getRuudunOminaisuus(0, 3), 0);
     }
     
     /**
      * 
      */
     @Test
-    public void toimiihanAlustus() {
+    public void alustusPienellaSyotteella() {
+        ruudukko = new Ruudukko(10, 10, 1);
         ruudukko.alustaRuudukko();
-        assertEquals(ruudukko.getRuudunOminaisuus(1, 2), 0);
-        assertEquals(ruudukko.getRuudunOminaisuus(5, 4), 0);
+        assertEquals(ruudukko.getRuudunOminaisuus(1, 3), 0);
+        assertEquals(ruudukko.getRuudunOminaisuus(9, 8), 0);
     }
-    
-   
     
     
 }

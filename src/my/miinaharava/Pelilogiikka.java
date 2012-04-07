@@ -1,6 +1,7 @@
 package my.miinaharava;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -11,10 +12,9 @@ import java.util.Random;
 public class Pelilogiikka {
     
     private ArrayList<Integer> miinat;
-//    private int rivit;
-//    private int sarakkeet;
-//    private int miinojenLkm;
-//    
+//    private int ruudukonIndeksi = 0;
+    private int miinaniIndeksi = 0;
+    private int miinanjIndeksi = 0;
     
     /**
      * Metodi arpoo annetun miinojen määrän ruudukkoon. Metodi käyttää arpomiseen 
@@ -29,14 +29,16 @@ public class Pelilogiikka {
      */
     public Ruutu[][] asetaMiinatRuudukkoon(Ruutu[][] ruudukko, int miinojenLkm) {
         
-        int rivit = ruudukko.length - 1;
-        int sarakkeet = ruudukko[rivit].length - 1;
+        int ruudukonIndeksi = 0;
+        int rivienLkm = ruudukko.length;
+        int sarakkeidenLkm = ruudukko[rivienLkm - 1].length;    //!!
         miinat = new ArrayList<Integer>(miinojenLkm);   //säilöö indeksit, missä miinoja sijaitsee
         
         Random randomGeneraattori = new Random();
+        int random = 0;
         for (int i = miinojenLkm; i > 0; i--) {
             while (true) {  //loopataan niin kauan et listaan ei tuu samoja lukuja
-                int random = randomGeneraattori.nextInt(rivit * sarakkeet); //including-> 0 - (riv*sar)<- excluding
+                random = randomGeneraattori.nextInt(rivienLkm * sarakkeidenLkm); //including-> 0 - (riv*sar)<- excluding
                 if (!miinat.contains(random)) { 
                     miinat.add(random);
                     break;
@@ -44,12 +46,16 @@ public class Pelilogiikka {
             }
         }
         
-        int luku = 0;
-        for (int i = 0; i < rivit; i++) {   //käydään ruudukko läpi ruutu ruudulta ja sijoitetaan miinat 'kartalle'
-            for (int j = 0; j < sarakkeet; j++) {
-                if (miinat.contains(luku))
+        //väliaik.
+        Collections.sort(miinat);
+        System.out.println(miinat.toString());
+        
+        
+        for (int i = 0; i < ruudukko.length; i++) {   //käydään ruudukko läpi ruutu ruudulta ja sijoitetaan miinat 'kartalle'
+            for (int j = 0; j < ruudukko[ruudukko.length - 1].length; j++) {        //!!
+                if (miinat.contains(ruudukonIndeksi))
                     ruudukko[i][j] = new Ruutu(-1); //miina = -1
-                luku++;
+                ruudukonIndeksi++;
             }
         }
         return ruudukko;
@@ -59,20 +65,22 @@ public class Pelilogiikka {
      * Metodi tarkistaa ruudukossa olevien miinojen perusteella, mikä numero 
      * ruutuun kuuluu, vai tuleeko ruudusta tyhjä. Miinojen olinpaikat tarkistetaan
      * miinat-ArrayListin avulla, ja jos miina löytyy, ruudukon saman indeksin
-     * kohdassa kutsutaan asetaNumero-metodia, joka tekee varsinaisen työn tarkastellessaan
-     * ruudun ympärillä olevia ruutuja yksi kerrallaan.
+     * kohdassa kutsutaan asetaNumerotMiinanYmparille-metodia, joka tekee varsinaisen 
+     * työn tarkastellessaan ruudun ympärillä olevia ruutuja yksi kerrallaan.
      * 
      * @param ruudukko
      * @return numeroitu ruudukko
      */
-    public Ruutu[][] asetaNumerotRuutuihin(Ruutu[][] ruudukko) {
+    public Ruutu[][] asetaNumerotRuudukkoon(Ruutu[][] ruudukko) {
         
         int ruudukonIndeksi = 0;
+        int rivienLkm = ruudukko.length;
+        int sarakkeidenLkm = ruudukko[rivienLkm - 1].length; //!!
         
-        for (int i = 0; i < ruudukko.length; i++) {
-            for (int j = 0; j < ruudukko[i].length; j++) {
+        for (miinaniIndeksi = 0; miinaniIndeksi < rivienLkm; miinaniIndeksi++) {
+            for (miinanjIndeksi = 0; miinanjIndeksi < sarakkeidenLkm; miinanjIndeksi++) {
                 if (miinat.contains(ruudukonIndeksi)) {
-                    asetaNumero(ruudukko, i, j);
+                    tarkasteleMiinaRuudunYmparistoa(ruudukko);//, miinaniIndeksi, miinanjIndeksi);
                 }
                 ruudukonIndeksi++;
             }
@@ -81,47 +89,58 @@ public class Pelilogiikka {
     }
     
     /**
-     * 
+     * Metodi tarkistaa, sijaitseeko miina kentän reunassa. Jos on, metodi asettaa
+     * oikeat indeksit läpikäytäville ruuduille.
      * 
      * @param ruudukko
      * @param miinaniIndeksi
-     * @param miinanjIndeksi 
-     */
-    private void asetaNumero(Ruutu[][] ruudukko, int miinaniIndeksi, int miinanjIndeksi) {
-        
-        int numero = 1; //ruutuun tuleva luku, tällä hetkellä vaan 1
-        int luku = 0;
-        for (int k = 0; k < ruudukko.length; k++) {
-            for (int l = 0; l < ruudukko.length; l++) {
-                
-                for (int m = -1; m <= 1; m++) { //miinaa ympäröivä alue 3 x 3 ruutua, indekseistä katsoen -1 -> 1
-                    for (int n = -1; n <= 1; n++) {   
-                        if (kurkistaRuutuun(ruudukko, miinaniIndeksi + m, miinanjIndeksi + n)) { //katsotaan miinan ympärille
-                            ruudukko[k][l] = new Ruutu(numero);
-                        }
-                        
-                    }
-                    
-                }
-                luku++;
-            }
-        }
-        
-        
-    }
-    
-    /**
-     * Palauttaa true, jos annettu ruutu on olemassa.
-     * 
-     * @param ruudukko
-     * @param i
-     * @param j
+     * @param miinanjIndeksi
      * @return 
      */
-    private boolean kurkistaRuutuun(Ruutu[][] ruudukko, int i, int j) {
-        if (ruudukko[i][j] == null || ruudukko[i][j].getOminaisuus() == -1) {   //jos null tai jos miina
-            return false;
+    public void tarkasteleMiinaRuudunYmparistoa(Ruutu[][] ruudukko) {//, int miinaniIndeksi, int miinanjIndeksi) {
+        
+        int muutosiIndeksiinAlussa = -1; //jos miina ei ole reunassa, alkuindeksit == -1
+        int muutosjIndeksiinAlussa = -1;
+        int maxMuutosiIndeksiin = 1; // jos miina ei ole reunassa, loppuindeksit == 1
+        int maxmuutosjIndeksiin = 1;
+        
+        if (miinaniIndeksi - 1 < 0) {
+            muutosiIndeksiinAlussa = 0;
         }
-        return true;
+        
+        else if (miinaniIndeksi + 1 > ruudukko.length - 1) {
+            maxMuutosiIndeksiin = 0;
+        }
+        
+        if (miinanjIndeksi - 1 < 0) {
+            muutosjIndeksiinAlussa = 0;
+        }
+        
+        else if (miinanjIndeksi + 1 > ruudukko[ruudukko.length - 1].length - 1) {
+            maxmuutosjIndeksiin = 0;
+        }
+        
+        asetaNumerot(ruudukko, muutosiIndeksiinAlussa, muutosjIndeksiinAlussa, maxMuutosiIndeksiin, maxmuutosjIndeksiin);
     }
+
+    /**
+     * 
+     * 
+     * @param alkuI
+     * @param alkuJ 
+     */
+    private void asetaNumerot(Ruutu[][] ruudukko, int alkuI, int alkuJ, int maxI, int maxJ) {    //i ja j määräävät, miten leveä rivi on vai onko sitä ollenkaan(?)
+        
+        for (int k = alkuI; k <= maxI; k++) {
+            for (int l = alkuJ; l <= maxJ; l++) {
+                int nykyinenNumero = ruudukko[miinaniIndeksi + k][miinanjIndeksi + l].getOminaisuus();
+                
+                if (ruudukko[miinaniIndeksi + k][miinanjIndeksi + l].getOminaisuus() != -1) {  //jos ei miina
+                    ruudukko[miinaniIndeksi + k][miinanjIndeksi + l] = new Ruutu(nykyinenNumero + 1);
+                }
+            }
+        }
+    }
+    
+    
 }
