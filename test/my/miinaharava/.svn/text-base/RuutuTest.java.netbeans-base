@@ -1,0 +1,23 @@
+package my.miinaharava;
+
+import org.junit.*;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author Vilma
+ */
+public class RuutuTest {
+    
+    @Test
+    public void numeronAsettaminenToimii() {
+        assertEquals(new Ruutu(1).getOminaisuus(), 1);
+        assertEquals(new Ruutu(5).getOminaisuus(), 5);
+    }
+
+    @Test
+    public void getteriTest() {
+        assertTrue(new Ruutu(3).getOminaisuus() == 3);
+    }
+    
+}

@@ -34,7 +34,7 @@ public class PelilogiikkaTest {
         alustaRuudukko(ruudukko);
         
         assertEquals(laskeMiinat(), 0);
-        logiikka.asetaMiinatRuudukkoon(ruudukko, miinojenLkm);
+        logiikka.asetaMiinatRuudukkoon(ruudukko, miinojenLkm, 0, 0);
         assertEquals(laskeMiinat(), miinojenLkm);
     }
     

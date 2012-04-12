@@ -23,12 +23,12 @@ public class Ruudukko {
      * @param sarakkeet Ruudukon sarakkeiden määrä
      * @param miinat Haluttu miinojen määrä
      */
-    public Ruudukko(int rivit, int sarakkeet, int miinat) {
+    public Ruudukko(int rivit, int sarakkeet, int miinat, int aloitusRivi, int aloitusSarake) {
         // syötteiden suuruuden tarkistus muualla?
         ruudukko = new Ruutu[rivit][sarakkeet];
         alustaRuudukko();
         logiikka = new Pelilogiikka();
-        ruudukko = logiikka.asetaMiinatRuudukkoon(ruudukko, miinat);
+        ruudukko = logiikka.asetaMiinatRuudukkoon(ruudukko, miinat,aloitusRivi, aloitusSarake);
         ruudukko = logiikka.asetaNumerotRuudukkoon(ruudukko);
     }
     
@@ -45,31 +45,20 @@ public class Ruudukko {
         }
     }
     
+    /**
+     * Metodi kutsuu Ruutu-luokan avaa-metodia, joka asettaa ruudun 'avatuksi'.
+     * @param rivi
+     * @param sarake 
+     */
+    public void avaaRuutu(int rivi, int sarake) {
+        ruudukko[rivi][sarake].avaaRuutu();
+    }
+    
     public int getRuudunOminaisuus(int rivi, int sarake) {
         return ruudukko[rivi][sarake].getOminaisuus();
     }
     
-    
-    //väliaikaiseen toimivuuden testaukseen
-    public void tulostaRuudukko() {
-        for (int i = 0; i < ruudukko.length; i++) {
-            for (int j = 0; j < ruudukko[i].length; j++) {
-                System.out.print("[");
-                if (ruudukko[i][j].getOminaisuus() == -1)
-                    System.out.print("*");
-                else if (ruudukko[i][j].getOminaisuus() > 0)
-                    System.out.print(ruudukko[i][j].getOminaisuus());
-                else
-                    System.out.print(" ");
-                System.out.print("] ");
-            }
-            System.out.println("");
-        }
-    }
-    
-    public static void main (String[] args) {
-        Ruudukko ruudukko = new Ruudukko(10, 10, 20);
-        ruudukko.tulostaRuudukko();
-        
+    public boolean getRuudunAvattu(int rivi, int sarake) {
+        return ruudukko[rivi][sarake].getAvattu();
     }
 }

@@ -27,19 +27,26 @@ public class Pelilogiikka {
      * @param miinojenLkm Haluttu miinojen lukumäärä
      * @return miinattu ruudukko
      */
-    public Ruutu[][] asetaMiinatRuudukkoon(Ruutu[][] ruudukko, int miinojenLkm) {
+    public Ruutu[][] asetaMiinatRuudukkoon(Ruutu[][] ruudukko, int miinojenLkm, int aloitusRivi, int aloitusSarake) {
         
         int ruudukonIndeksi = 0;
         int rivienLkm = ruudukko.length;
         int sarakkeidenLkm = ruudukko[rivienLkm - 1].length;    //!!
         miinat = new ArrayList<Integer>(miinojenLkm);   //säilöö indeksit, missä miinoja sijaitsee
         
+        int aloitusRuutu = 0;
+        for (int i = 0; i < aloitusRivi; i++) {
+            for (int j = 0; j < aloitusSarake; j++) {  //lasketaan aloitusruudun indeksi
+                aloitusRuutu++;
+            }
+        }
+        
         Random randomGeneraattori = new Random();
         int random = 0;
         for (int i = miinojenLkm; i > 0; i--) {
             while (true) {  //loopataan niin kauan et listaan ei tuu samoja lukuja
                 random = randomGeneraattori.nextInt(rivienLkm * sarakkeidenLkm); //including-> 0 - (riv*sar)<- excluding
-                if (!miinat.contains(random)) { 
+                if (!miinat.contains(random) && random != aloitusRuutu) { 
                     miinat.add(random);
                     break;
                 }
