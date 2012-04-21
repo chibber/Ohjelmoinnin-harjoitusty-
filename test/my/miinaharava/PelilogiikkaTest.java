@@ -59,7 +59,7 @@ public class PelilogiikkaTest {
     private void alustaRuudukko(Ruutu[][] ruudukko) {
         for (int i = 0; i < ruudukko.length; i++) {
             for (int j = 0; j < ruudukko[i].length; j++) {
-                ruudukko[i][j] = new Ruutu(0);
+                ruudukko[i][j] = new Ruutu(0, i, j);
             }
         }
     }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Masiina" name="my.miinaharava.MiinaharavaUITest" tests="1" time="0.167" timestamp="2012-04-12T15:18:42">
+<testsuite errors="0" failures="0" hostname="Masiina" name="my.miinaharava.MiinaharavaUITest" tests="1" time="0.157" timestamp="2012-04-21T19:23:29">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="FI" />
@@ -65,7 +65,7 @@
     <property name="manifest.available+main.class" value="true" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner my.miinaharava.MiinaharavaUITest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Vilma\Ohjelmoinnin-harjoitusty-\build\test\results\TEST-my.miinaharava.MiinaharavaUITest.xml crashfile=C:\Users\Vilma\Ohjelmoinnin-harjoitusty-\build\junitvmwatcher4105801518103083272.properties propsfile=C:\Users\Vilma\Ohjelmoinnin-harjoitusty-\build\junit3306477341323625745.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner my.miinaharava.MiinaharavaUITest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Vilma\Ohjelmoinnin-harjoitusty-\build\test\results\TEST-my.miinaharava.MiinaharavaUITest.xml crashfile=C:\Users\Vilma\Ohjelmoinnin-harjoitusty-\build\junitvmwatcher5491391687157489148.properties propsfile=C:\Users\Vilma\Ohjelmoinnin-harjoitusty-\build\junit323141146998541704.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -425,7 +425,7 @@
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
   </properties>
-  <testcase classname="my.miinaharava.MiinaharavaUITest" name="asd" time="0.0040" />
+  <testcase classname="my.miinaharava.MiinaharavaUITest" name="asd" time="0.0050" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

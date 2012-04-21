@@ -17,6 +17,9 @@ public class RuudukkoTest {
     int annettuRivi = 0;
     int annettuSarake = 0;
     
+    /**
+     * Testaa avaaRuudut-metodin toimivuutta.
+     */
     @Test
     public void testaaAvattuGetteria() {
         rivit = 10;
@@ -27,12 +30,12 @@ public class RuudukkoTest {
         ruudukko = new Ruudukko(rivit, sarakkeet, miinat, annettuRivi, annettuSarake);
         
         assertEquals(ruudukko.getRuudunAvattu(annettuRivi, annettuSarake), false);
-        ruudukko.avaaRuutu(annettuRivi, annettuSarake);
+        ruudukko.avaaRuudut(annettuRivi, annettuSarake);
         assertEquals(ruudukko.getRuudunAvattu(annettuRivi, annettuSarake), true);
     }
     
     /**
-     * 
+     * Testaa alustaRuudukko-metodia (ennalta määrätyllä) maksimisyötteellä.
      */
     @Test
     public void alustusIsollaSyotteella() {
@@ -43,7 +46,7 @@ public class RuudukkoTest {
     }
     
     /**
-     * 
+     * Testaa alustaRuudukko-metodia (ennalta määrätyllä) minimisyötteellä.
      */
     @Test
     public void alustusPienellaSyotteella() {
